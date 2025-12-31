@@ -130,28 +130,31 @@
     </style>
 </head>
 <body>
-    <!-- Navigation - WITH MOBILE OPTIMIZATION -->
-    <nav class="nav-blur shadow-sm py-4 fixed w-full top-0 z-50">
-        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <!-- BRIDGE ICON - CHANGED TO #5A7863 -->
-                <div class="bg-[#5A7863] text-white p-3 rounded-xl">
-                    <i class="fas fa-bridge text-xl"></i>
-                </div>
-                <!-- StudentBridge text - CHANGED TO #5A7863 -->
-                <h1 class="text-2xl font-bold text-[#5A7863]">StudentBridge</h1>
+    <!-- Navigation - MOBILE OPTIMIZED -->
+<nav class="nav-blur shadow-sm py-3 fixed w-full top-0 z-50">
+    <div class="container mx-auto px-3 md:px-6 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <!-- BRIDGE ICON - Smaller on mobile -->
+            <div class="bg-[#5A7863] text-white p-2 md:p-3 rounded-xl">
+                <i class="fas fa-bridge text-lg md:text-xl"></i>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="#features" class="text-gray-600 hover:text-[#5A7863] font-medium nav-features">
-                    Features
-                </a>
-                <!-- LOGIN BUTTON - CHANGED TO #5A7863 -->
-                <a href="login.html" class="bg-[#5A7863] text-white px-6 py-2 rounded-lg font-medium nav-login-btn hover:bg-[#4a6753]">
-                    <i class="fas fa-sign-in-alt mr-2"></i>Login
-                </a>
-            </div>
+            <!-- StudentBridge text - Smaller on mobile -->
+            <h1 class="text-lg md:text-2xl font-bold text-[#5A7863] truncate max-w-[120px] md:max-w-none">
+                StudentBridge
+            </h1>
         </div>
-    </nav>
+        <div class="flex items-center space-x-2 md:space-x-4">
+            <!-- Features - Smaller on mobile -->
+            <a href="#features" class="text-gray-600 hover:text-[#5A7863] font-medium text-xs md:text-base px-1 md:px-0">
+                Features
+            </a>
+            <!-- LOGIN BUTTON - Smaller on mobile -->
+            <a href="login.html" class="bg-[#5A7863] text-white px-3 md:px-6 py-1.5 md:py-2 rounded-lg font-medium text-xs md:text-base hover:bg-[#4a6753]">
+                <i class="fas fa-sign-in-alt mr-1 md:mr-2"></i>Login
+            </a>
+        </div>
+    </div>
+</nav>
 
     <!-- Hero Section - STAYS BLUE GRADIENT -->
     <section class="hero-bg text-white pt-32 pb-20 mt-16">
