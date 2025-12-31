@@ -101,31 +101,59 @@
             color: rgb(174, 214, 207);
             font-weight: 600;
         }
+        
+        /* MOBILE OPTIMIZATION - ONLY NAVBAR */
+        @media (max-width: 640px) {
+            .nav-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .nav-logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .nav-space {
+                gap: 0.75rem;
+            }
+            
+            .nav-login-btn {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+                font-size: 0.875rem;
+            }
+            
+            .nav-features {
+                font-size: 0.875rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation - WITH MOBILE OPTIMIZATION -->
     <nav class="nav-blur shadow-sm py-4 fixed w-full top-0 z-50">
-        <div class="container mx-auto px-6 flex justify-between items-center">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <!-- LOGO FIXED: Blue background, white icon -->
-                <div class="bg-primary text-white p-3 rounded-xl">
+                <!-- BRIDGE ICON - CHANGED TO #5A7863 -->
+                <div class="bg-[#5A7863] text-white p-3 rounded-xl">
                     <i class="fas fa-bridge text-xl"></i>
                 </div>
-                <!-- StudentBridge text - Blue color -->
-                <h1 class="text-2xl font-bold text-primary-color">StudentBridge</h1>
+                <!-- StudentBridge text - CHANGED TO #5A7863 -->
+                <h1 class="text-2xl font-bold text-[#5A7863]">StudentBridge</h1>
             </div>
-            <div class="space-x-4">
-                <a href="#features" class="text-gray-600 hover:text-primary-color font-medium">Features</a>
-                <!-- LOGIN BUTTON FIXED: Blue background, white text -->
-                <a href="login.html" class="btn-primary px-6 py-2 rounded-lg font-medium">
+            <div class="flex items-center space-x-4">
+                <a href="#features" class="text-gray-600 hover:text-[#5A7863] font-medium nav-features">
+                    Features
+                </a>
+                <!-- LOGIN BUTTON - CHANGED TO #5A7863 -->
+                <a href="login.html" class="bg-[#5A7863] text-white px-6 py-2 rounded-lg font-medium nav-login-btn hover:bg-[#4a6753]">
                     <i class="fas fa-sign-in-alt mr-2"></i>Login
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - STAYS BLUE GRADIENT -->
     <section class="hero-bg text-white pt-32 pb-20 mt-16">
         <div class="container mx-auto px-6 text-center">
             <div class="floating inline-block">
@@ -135,7 +163,7 @@
                 Connecting the Student Body to the Students
             </p>
             <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
-                <!-- JOIN NOW BUTTON FIXED: White background, blue text -->
+                <!-- JOIN NOW BUTTON - STAYS BLUE -->
                 <a href="signup.html" class="bg-white text-primary-color px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition shadow-lg transform hover:-translate-y-1">
                     <i class="fas fa-user-plus mr-2"></i>Join Now
                 </a>
@@ -146,7 +174,7 @@
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features Section - STAYS BLUE -->
     <section id="features" class="py-20 gradient-section">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 text-primary-color">Everything You Need, In One Place</h2>
@@ -199,7 +227,7 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
+    <!-- How It Works Section - STAYS BLUE -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-12 text-primary-color">
@@ -208,7 +236,7 @@
             
             <div class="max-w-4xl mx-auto">
                 <div class="grid md:grid-cols-3 gap-8">
-                    <!-- Step 1 - FIXED: Blue circle, white number -->
+                    <!-- Step 1 - STAYS BLUE -->
                     <div class="text-center">
                         <div class="bg-primary step-circle w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                             1
@@ -217,16 +245,19 @@
                         <p class="text-gray-600">Use your school email: <span class="font-mono text-sm">rollnumber.tcs@csn.edu.pk</span></p>
                     </div>
                     
-                    <!-- Step 2 - FIXED: Secondary color, white number -->
+                    <!-- Step 2 - STAYS BLUE -->
                     <div class="text-center">
                         <div class="bg-secondary step-circle w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                             2
                         </div>
-                        <h4 class="text-xl font-bold mb-3 text-gray-800">Verify</h4>
-                        <p class="text-gray-600">Enter the code sent to your school email to activate your account.</p>
+                        <h4 class="text-xl font-bold mb-3 text-gray-800">Verify with ID</h4>
+                        <p class="text-gray-600">
+                            Upload student ID for verification.
+                            We'll approve you manually.
+                        </p>
                     </div>
                     
-                    <!-- Step 3 - FIXED: Accent color, dark number -->
+                    <!-- Step 3 - STAYS BLUE -->
                     <div class="text-center">
                         <div class="bg-accent text-gray-800 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                             3
@@ -239,7 +270,7 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA Section - STAYS BLUE -->
     <section class="py-16 cta-gradient">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-8 text-primary-color">
@@ -248,7 +279,7 @@
             <p class="text-lg text-gray-700 mb-10 max-w-2xl mx-auto">
                 Join hundreds of students who are already connecting, sharing, and helping each other through StudentBridge.
             </p>
-            <!-- CTA BUTTON FIXED: Blue background, white text -->
+            <!-- CTA BUTTON - STAYS BLUE -->
             <a href="signup.html" 
                class="inline-flex items-center btn-primary px-12 py-4 rounded-xl font-bold text-lg transition shadow-lg transform hover:-translate-y-1">
                 <i class="fas fa-graduation-cap mr-3"></i>
@@ -257,7 +288,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - STAYS THE SAME -->
     <footer style="background-color: #2c3e50;" class="text-gray-400 py-12">
         <div class="container mx-auto px-6">
             <div class="text-center mb-8">
