@@ -3,191 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudentBridge | TCS CSN Student Portal</title>
+    <title>StudentBridge | Connect Students</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Change fonts: Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Custom colors and fonts */
+        :root {
+            --primary: #4361ee;    /* Blue */
+            --secondary: #3a0ca3;  /* Purple */
+            --accent: #f72585;     /* Pink */
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
         .hero-bg {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
         }
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
         }
-        .email-format {
-            font-family: 'Courier New', monospace;
-            background: #1a1a1a;
-            color: #00ff00;
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+        
+        .btn-primary:hover {
+            background: var(--secondary);
+        }
+        
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Custom animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
         }
     </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg py-4">
+    <!-- Navigation - SIMPLIFIED -->
+    <nav class="bg-white shadow-sm py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="bg-blue-600 text-white p-2 rounded-lg">
-                    <i class="fas fa-users text-xl"></i>
+                <!-- Logo with icon - CHANGE THIS ICON -->
+                <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-3 rounded-xl">
+                    <i class="fas fa-users text-xl"></i> <!-- Try: fa-hands-helping, fa-bridge, fa-link -->
                 </div>
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-800">Student<span class="text-blue-600">Bridge</span></h1>
-                    <p class="text-xs text-gray-500">TCS CSN Student Portal</p>
-                </div>
+                <!-- Only StudentBridge text -->
+                <h1 class="text-2xl font-bold text-gray-800" style="color: var(--primary);">StudentBridge</h1>
             </div>
             <div class="space-x-4">
                 <a href="#features" class="text-gray-600 hover:text-blue-600 font-medium">Features</a>
-                <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
-                <a href="login.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700">
+                <a href="login.html" class="btn-primary px-6 py-2 rounded-lg font-medium">
                     <i class="fas fa-sign-in-alt mr-2"></i>Login
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - CLEANED UP -->
     <section class="hero-bg text-white py-20">
         <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+            <!-- Main heading with floating animation -->
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 floating">
                 StudentBridge
             </h1>
-            <p class="text-2xl md:text-3xl font-light mb-8">
+            <p class="text-2xl md:text-3xl font-light mb-12 opacity-90">
                 Connecting the Student Body to the Students
             </p>
             
-            <!-- Email Format Display -->
-            <div class="max-w-2xl mx-auto mb-12">
-                <div class="email-format inline-block mb-4">
-                    20241234.tcs@csn.edu.pk
-                </div>
-                <p class="text-lg opacity-90">
-                    Use your school-issued email format: <strong>rollnumber.tcs@csn.edu.pk</strong>
-                </p>
-            </div>
-            
-            <!-- CTA Buttons -->
+            <!-- Clean CTA Buttons -->
             <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
                 <a href="signup.html" 
-                   class="bg-white text-blue-700 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow-lg">
-                    <i class="fas fa-user-plus mr-2"></i>Join with School Email
+                   class="bg-white text-blue-700 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition shadow-lg hover:shadow-xl">
+                    <i class="fas fa-user-plus mr-2"></i>Join Now
                 </a>
                 <a href="#features" 
                    class="bg-transparent border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-blue-700 transition">
-                    <i class="fas fa-play-circle mr-2"></i>Explore Features
+                    <i class="fas fa-play-circle mr-2"></i>See How It Works
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Features Section - UPDATED -->
     <section id="features" class="py-20 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">
-                Direct Access to Your Student Community
+            <h2 class="text-4xl font-bold text-center mb-16" style="color: var(--secondary);">
+                Everything You Need, In One Place
             </h2>
             
             <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-                <!-- Feature 1 -->
-                <div class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-xl transition">
-                    <div class="feature-icon text-white">
-                        <i class="fas fa-comment-alt text-2xl"></i>
+                <!-- Feature 1 - CHANGE ICON/COLOR -->
+                <div class="feature-card bg-white p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-blue-100 text-blue-600">
+                            <i class="fas fa-comment-dots text-2xl"></i>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">
-                        Reach Head Girl/Boy Instantly
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+                        Direct Messaging
                     </h3>
-                    <p class="text-gray-600">
-                        Message your student leadership directly. No formalities, just tap and connect.
+                    <p class="text-gray-600 text-center">
+                        Message your Head Boy/Girl, class reps, or society heads instantly.
                     </p>
                 </div>
                 
-                <!-- Feature 2 -->
-                <div class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-xl transition">
-                    <div class="feature-icon text-white">
-                        <i class="fas fa-hands-helping text-2xl"></i>
+                <!-- Feature 2 - CHANGE ICON/COLOR -->
+                <div class="feature-card bg-white p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-purple-100 text-purple-600">
+                            <i class="fas fa-hands-helping text-2xl"></i>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">
-                        Academic Help When You Need It
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+                        Academic Support
                     </h3>
-                    <p class="text-gray-600">
-                        Stuck on homework? Get help from peers, seniors, or teachers in our community.
+                    <p class="text-gray-600 text-center">
+                        Get help with homework, projects, or study tips from peers.
                     </p>
                 </div>
                 
-                <!-- Feature 3 -->
-                <div class="text-center p-8 rounded-2xl bg-gray-50 hover:shadow-xl transition">
-                    <div class="feature-icon text-white">
-                        <i class="fas fa-users text-2xl"></i>
+                <!-- Feature 3 - CHANGE ICON/COLOR -->
+                <div class="feature-card bg-white p-8 rounded-2xl">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-pink-100 text-pink-600">
+                            <i class="fas fa-calendar-star text-2xl"></i>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">
-                        Explore All Societies
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">
+                        Society Hub
                     </h3>
-                    <p class="text-gray-600">
-                        Browse societies, see their events and members. Find your perfect extracurricular match.
+                    <p class="text-gray-600 text-center">
+                        Discover, join, and participate in all school societies.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Email Requirement Section -->
-    <section class="bg-gray-900 text-white py-16">
+    <!-- Simple CTA Section -->
+    <section class="py-16" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-8">Exclusive to TCS CSN Students</h2>
-            
-            <div class="max-w-3xl mx-auto bg-gray-800 rounded-2xl p-8">
-                <div class="flex flex-col md:flex-row items-center justify-between mb-8">
-                    <div class="text-left mb-6 md:mb-0">
-                        <h3 class="text-xl font-bold mb-2">Your Email Format</h3>
-                        <p class="text-gray-300">Found on your student ID or school documents</p>
-                    </div>
-                    <div class="bg-black text-green-400 font-mono text-lg px-6 py-3 rounded-lg">
-                        rollnumber<span class="text-white">.tcs@csn.edu.pk</span>
-                    </div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-6 text-left">
-                    <div class="bg-gray-700 p-4 rounded-lg">
-                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
-                        <span class="font-mono">20241234.tcs@csn.edu.pk</span>
-                        <p class="text-green-300 text-sm mt-1">✓ Valid Format</p>
-                    </div>
-                    <div class="bg-gray-700 p-4 rounded-lg">
-                        <i class="fas fa-times-circle text-red-400 mr-2"></i>
-                        <span class="font-mono">student@gmail.com</span>
-                        <p class="text-red-300 text-sm mt-1">✗ Not Accepted</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-12">
-                <a href="signup.html" 
-                   class="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition">
-                    <i class="fas fa-graduation-cap mr-3"></i>
-                    Join with Your School Email
-                </a>
-            </div>
+            <h2 class="text-3xl font-bold mb-8" style="color: var(--primary);">
+                Ready to Connect with Your School?
+            </h2>
+            <a href="signup.html" 
+               class="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-12 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition shadow-lg">
+                <i class="fas fa-rocket mr-3"></i>
+                Launch Your StudentBridge Account
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-400 py-12">
+    <footer class="bg-gray-900 text-gray-400 py-12">
         <div class="container mx-auto px-6">
             <div class="text-center mb-8">
                 <h3 class="text-2xl font-bold text-white mb-2">StudentBridge</h3>
-                <p class="text-lg">TCS CSN Student Council Initiative</p>
+                <p>Student Council Initiative</p>
             </div>
             <div class="border-t border-gray-800 pt-8 text-center">
-                <p>© 2024 StudentBridge. For TCS CSN students only.</p>
-                <p class="text-sm mt-2">Verified access through school email authentication</p>
+                <p>© 2024 StudentBridge. Connecting students since day one.</p>
             </div>
         </div>
     </footer>
