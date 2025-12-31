@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="app.js"></script>
     <style>
+        /* Your Color Palette */
+        :root {
+            --primary: #5A7863;       /* Green - main buttons */
+            --secondary: #91ADC8;     /* rgb(145, 173, 200) - secondary */
+            --accent: #AED6CF;        /* rgb(174, 214, 207) - accent */
+            --light: #FEFDD6;         /* rgb(254, 253, 214) - light */
+            --light-bg: #FEF9D9;      /* rgb(254, 249, 217) - features bg */
+        }
+        
         .signup-container {
             min-height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background-color: var(--light);
             padding: 20px;
         }
+        
         .email-format-guide {
             font-family: 'Courier New', monospace;
             background: #1a1a1a;
@@ -24,27 +35,55 @@
             font-size: 1.1rem;
             letter-spacing: 1px;
         }
+        
         .input-valid {
-            border-color: #10b981 !important;
-            background-color: #f0fdf4 !important;
+            border-color: var(--primary) !important;
+            background-color: rgba(90, 120, 99, 0.05) !important;
         }
+        
         .input-invalid {
             border-color: #ef4444 !important;
             background-color: #fef2f2 !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary) !important;
+            color: white !important;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #4a6753 !important;
+        }
+        
+        .text-primary {
+            color: var(--primary) !important;
+        }
+        
+        .text-secondary {
+            color: var(--secondary) !important;
+        }
+        
+        .bg-accent {
+            background-color: var(--accent) !important;
+        }
+        
+        .border-accent {
+            border-color: var(--accent) !important;
         }
     </style>
 </head>
 <body class="signup-container">
     <div class="container mx-auto max-w-2xl">
         <!-- Back Button -->
-        <a href="index.html" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6">
+        <a href="index.html" class="inline-flex items-center text-primary hover:opacity-80 mb-6">
             <i class="fas fa-arrow-left mr-2"></i> Back to Home
         </a>
 
         <!-- Signup Card -->
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <!-- Header -->
-            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 text-center">
+            <!-- Header - Matching main page colors -->
+            <div class="bg-gradient-to-r from-[#5A7863] to-[#7a9a83] text-white p-8 text-center">
                 <div class="inline-block bg-white/20 p-4 rounded-2xl mb-4 backdrop-blur-sm">
                     <i class="fas fa-user-plus text-3xl"></i>
                 </div>
@@ -53,13 +92,15 @@
             </div>
 
             <!-- Email Format Guide -->
-            <div class="p-6 bg-gray-50 border-b">
+            <div class="p-6" style="background-color: var(--light-bg);">
                 <div class="email-format-guide">
                     <span class="text-yellow-300">rollnumber</span><span class="text-white">.tcs@csn.edu.pk</span>
                 </div>
-                <div class="text-center text-gray-600">
-                    <p><i class="fas fa-info-circle mr-2"></i>Use the email format from your student ID</p>
-                    <p class="text-sm mt-1">Example: <span class="font-mono">20241234.tcs@csn.edu.pk</span></p>
+                <div class="text-center text-gray-600 mt-4">
+                    <p><i class="fas fa-info-circle mr-2 text-primary"></i>Use the email format from your student ID</p>
+                    <p class="text-sm mt-2 font-mono bg-gray-100 p-2 rounded-lg inline-block">
+                        20241234.tcs@csn.edu.pk
+                    </p>
                 </div>
             </div>
 
@@ -69,7 +110,7 @@
                     <!-- Email -->
                     <div class="mb-8">
                         <label class="block text-gray-700 font-bold mb-4">
-                            <i class="fas fa-envelope mr-2 text-blue-600"></i>
+                            <i class="fas fa-envelope mr-2 text-primary"></i>
                             School Email Address
                         </label>
                         
@@ -77,10 +118,10 @@
                             <input type="text" 
                                    id="rollNumber" 
                                    placeholder="Enter your roll number"
-                                   class="flex-1 p-4 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   class="flex-1 p-4 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-[#5A7863]"
                                    pattern="\d+"
                                    required>
-                            <div class="bg-gray-100 text-gray-700 px-4 py-4 border border-gray-300 border-l-0">
+                            <div class="bg-gray-100 text-gray-700 px-4 py-4 border border-gray-300 border-l-0 font-mono">
                                 .tcs@csn.edu.pk
                             </div>
                         </div>
@@ -88,47 +129,47 @@
                         <input type="hidden" id="fullEmail">
                         
                         <div class="mt-3" id="emailPreview">
-                            <p class="text-sm text-gray-500">Your email will be:</p>
-                            <div id="emailDisplay" class="font-mono bg-gray-100 p-3 rounded-lg mt-1 text-center">
+                            <p class="text-sm text-gray-500 mb-2">Your email will be:</p>
+                            <div id="emailDisplay" class="font-mono bg-gray-100 p-3 rounded-lg text-center transition-all duration-300">
                                 rollnumber.tcs@csn.edu.pk
                             </div>
                         </div>
                         
                         <div id="emailError" class="text-red-500 text-sm mt-2 hidden"></div>
-                        <div id="emailSuccess" class="text-green-500 text-sm mt-2 hidden"></div>
+                        <div id="emailSuccess" class="text-green-600 text-sm mt-2 hidden"></div>
                     </div>
 
                     <!-- Username -->
                     <div class="mb-8">
                         <label class="block text-gray-700 font-bold mb-4">
-                            <i class="fas fa-user mr-2 text-blue-600"></i>
+                            <i class="fas fa-user mr-2 text-primary"></i>
                             Choose a Username
                         </label>
                         <input type="text" 
                                id="username" 
                                placeholder="e.g., ahmad_student24"
-                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A7863]"
                                required>
                         <p class="text-sm text-gray-500 mt-2">This will be visible to other students</p>
                         <div id="usernameError" class="text-red-500 text-sm mt-2 hidden"></div>
-                        <div id="usernameSuccess" class="text-green-500 text-sm mt-2 hidden"></div>
+                        <div id="usernameSuccess" class="text-green-600 text-sm mt-2 hidden"></div>
                     </div>
 
                     <!-- Password -->
                     <div class="mb-8">
                         <label class="block text-gray-700 font-bold mb-4">
-                            <i class="fas fa-lock mr-2 text-blue-600"></i>
+                            <i class="fas fa-lock mr-2 text-primary"></i>
                             Create Password
                         </label>
                         <input type="password" 
                                id="password" 
                                placeholder="At least 8 characters"
-                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A7863]"
                                minlength="8"
                                required>
                         <div class="mt-2">
                             <div class="flex items-center text-sm text-gray-500">
-                                <i class="fas fa-info-circle mr-2"></i>
+                                <i class="fas fa-info-circle mr-2 text-secondary"></i>
                                 Include letters, numbers, and special characters
                             </div>
                         </div>
@@ -138,13 +179,13 @@
                     <!-- Confirm Password -->
                     <div class="mb-10">
                         <label class="block text-gray-700 font-bold mb-4">
-                            <i class="fas fa-lock mr-2 text-blue-600"></i>
+                            <i class="fas fa-lock mr-2 text-primary"></i>
                             Confirm Password
                         </label>
                         <input type="password" 
                                id="confirmPassword" 
                                placeholder="Re-enter your password"
-                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5A7863]"
                                required>
                         <div id="confirmPasswordError" class="text-red-500 text-sm mt-2 hidden"></div>
                     </div>
@@ -154,10 +195,10 @@
                         <label class="flex items-start">
                             <input type="checkbox" 
                                    id="terms" 
-                                   class="mt-1 mr-3 h-5 w-5 text-blue-600 rounded">
+                                   class="mt-1 mr-3 h-5 w-5 text-primary rounded focus:ring-[#5A7863]">
                             <span class="text-gray-700">
-                                I agree to the <a href="#" class="text-blue-600 hover:underline">Terms of Service</a> and 
-                                <a href="#" class="text-blue-600 hover:underline">Privacy Policy</a>. I confirm that I am a current TCS CSN student.
+                                I agree to the <a href="#" class="text-primary hover:underline">Terms of Service</a> and 
+                                <a href="#" class="text-primary hover:underline">Privacy Policy</a>. I confirm that I am a current TCS CSN student.
                             </span>
                         </label>
                         <div id="termsError" class="text-red-500 text-sm mt-2 hidden">
@@ -165,17 +206,17 @@
                         </div>
                     </div>
 
-                    <!-- Submit Button -->
+                    <!-- Submit Button - CHANGED TEXT -->
                     <button type="submit" 
                             id="submitBtn"
-                            class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed">
-                        <i class="fas fa-paper-plane mr-2"></i>Send Verification Code
+                            class="w-full btn-primary py-4 rounded-xl font-bold text-lg hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-lg">
+                        <i class="fas fa-user-check mr-2"></i>Verify Your Account
                     </button>
 
                     <!-- Progress -->
                     <div class="mt-6 hidden" id="progressSection">
                         <div class="flex items-center justify-center">
-                            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mr-3"></div>
+                            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mr-3"></div>
                             <span class="text-gray-600">Processing your registration...</span>
                         </div>
                     </div>
@@ -185,32 +226,38 @@
                 <div class="mt-10 pt-8 border-t border-gray-200 text-center">
                     <p class="text-gray-600">
                         Already have an account?
-                        <a href="login.html" class="text-blue-600 font-bold hover:underline ml-1">
+                        <a href="login.html" class="text-primary font-bold hover:underline ml-1">
                             Login here
                         </a>
                     </p>
                 </div>
 
-                <!-- Verification Info -->
-                <div class="mt-10 p-6 bg-blue-50 rounded-xl border border-blue-200">
-                    <h4 class="font-bold text-blue-800 mb-4">
-                        <i class="fas fa-shield-alt mr-2"></i>
+                <!-- Verification Info - UPDATED FOR ID VERIFICATION -->
+                <div class="mt-10 p-6 rounded-xl border border-accent" style="background-color: rgba(174, 214, 207, 0.1);">
+                    <h4 class="font-bold text-gray-800 mb-4">
+                        <i class="fas fa-id-card mr-2 text-primary"></i>
                         Verification Process
                     </h4>
-                    <ol class="text-blue-700 space-y-3">
+                    <ol class="text-gray-700 space-y-4">
                         <li class="flex items-start">
-                            <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
-                            <span>Enter your roll number (it will auto-complete to rollnumber.tcs@csn.edu.pk)</span>
+                            <span class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 text-sm">1</span>
+                            <span class="pt-0.5">Enter your roll number above (it will auto-complete to rollnumber.tcs@csn.edu.pk)</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
-                            <span>We'll send a 6-digit code to your school email</span>
+                            <span class="bg-secondary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 text-sm">2</span>
+                            <span class="pt-0.5">Upload a photo of your TCS CSN student ID card on the next page</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
-                            <span>Enter the code on the verification page to activate your account</span>
+                            <span class="bg-accent text-gray-800 rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 text-sm">3</span>
+                            <span class="pt-0.5">We'll manually verify your ID and activate your account within 24 hours</span>
                         </li>
                     </ol>
+                    <div class="mt-4 p-3 bg-white rounded-lg border border-gray-200">
+                        <p class="text-sm text-gray-600">
+                            <i class="fas fa-shield-alt mr-2 text-primary"></i>
+                            <strong>Privacy Protected:</strong> ID photos auto-delete after 24 hours
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -228,7 +275,7 @@
             if (rollNumber && /^\d+$/.test(rollNumber)) {
                 const fullEmail = `${rollNumber}.tcs@csn.edu.pk`;
                 emailDisplay.textContent = fullEmail;
-                emailDisplay.className = 'font-mono bg-green-50 text-green-700 p-3 rounded-lg mt-1 text-center border border-green-200';
+                emailDisplay.className = 'font-mono bg-green-50 text-green-700 p-3 rounded-lg text-center border border-green-200 transition-all duration-300';
                 fullEmailInput.value = fullEmail;
                 
                 // Check if email exists
@@ -243,7 +290,7 @@
                 }
             } else {
                 emailDisplay.textContent = 'rollnumber.tcs@csn.edu.pk';
-                emailDisplay.className = 'font-mono bg-gray-100 p-3 rounded-lg mt-1 text-center';
+                emailDisplay.className = 'font-mono bg-gray-100 p-3 rounded-lg text-center transition-all duration-300';
                 fullEmailInput.value = '';
                 document.getElementById('emailError').classList.add('hidden');
                 document.getElementById('emailSuccess').classList.add('hidden');
@@ -299,7 +346,7 @@
         passwordInput.addEventListener('input', validatePassword);
         confirmPasswordInput.addEventListener('input', validatePassword);
         
-        // Form submission
+        // Form submission - UPDATED FOR ID VERIFICATION
         document.getElementById('signupForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -378,14 +425,11 @@
             
             // Simulate API call delay
             setTimeout(() => {
-                // Register user
+                // Register user (pending verification)
                 const result = StudentBridge.registerUser(fullEmail, username, password);
                 
                 if (result.success) {
-                    // Generate verification code
-                    const code = StudentBridge.generateVerificationCode(fullEmail);
-                    
-                    // Save pending registration
+                    // Save pending registration for ID verification
                     localStorage.setItem('pending_registration', JSON.stringify({
                         email: fullEmail,
                         username: username,
@@ -393,8 +437,8 @@
                         timestamp: new Date().toISOString()
                     }));
                     
-                    // Redirect to verification page
-                    window.location.href = `verify.html?email=${encodeURIComponent(fullEmail)}`;
+                    // Redirect to ID upload page (you'll need to create this)
+                    window.location.href = `verify-id.html?email=${encodeURIComponent(fullEmail)}`;
                 } else {
                     document.getElementById('emailError').textContent = result.message;
                     document.getElementById('emailError').classList.remove('hidden');
