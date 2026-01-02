@@ -1,2 +1,3 @@
 # studentbridge-portal
-Student portal for TCS CSN students
+Student portal for students of The City School, E11 campus
+
