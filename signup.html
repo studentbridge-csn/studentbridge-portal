@@ -461,138 +461,176 @@
         
         // Initial check
         updateSubmitButton();
-    </script>
+     </script>
+    
+    <script>
     // Terms & Privacy Modals
-function showTermsModal() {
-    document.getElementById('modalTitle').textContent = 'Terms of Service';
-    document.getElementById('modalContent').innerHTML = `
-        <div class="text-left space-y-4">
-            <h3 class="text-xl font-bold" style="color: rgb(100, 127, 188);">Terms of Service for StudentBridge</h3>
-            
-            <div>
-                <h4 class="font-bold text-gray-800 mb-2">Who Can Use</h4>
-                <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                    <li>Current TCS E11 Campus students only</li>
-                    <li>Must verify with school ID card</li>
-                    <li>One account per student</li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="font-bold text-gray-800 mb-2">Rules</h4>
-                <ol class="list-decimal pl-5 text-gray-700 space-y-1">
-                    <li>Be respectful to other students</li>
-                    <li>No bullying, harassment, or hate speech</li>
-                    <li>Keep all content school-appropriate</li>
-                    <li>Don't share personal contact information</li>
-                    <li>Report inappropriate content immediately</li>
-                </ol>
-            </div>
-            
-            <div>
-                <h4 class="font-bold text-gray-800 mb-2">Account Responsibility</h4>
-                <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                    <li>You're responsible for your account security</li>
-                    <li>We may suspend accounts for rule violations</li>
-                    <li>Contact us if you forget your password</li>
-                </ul>
-            </div>
-            
-            <div class="p-3 rounded" style="background-color: rgba(174, 214, 207, 0.2);">
-                <h4 class="font-bold text-gray-800 mb-1">Disclaimer</h4>
-                <p class="text-gray-700 text-sm">
-                    This is a student project created by Tuba Siddiqui (STEM Club President).
-                    Not an official school platform.
+    function showTermsModal() {
+        document.getElementById('modalTitle').textContent = 'Terms of Service';
+        document.getElementById('modalContent').innerHTML = `
+            <div class="text-left space-y-4">
+                <h3 class="text-xl font-bold" style="color: rgb(100, 127, 188);">Terms of Service for StudentBridge</h3>
+                
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">Who Can Use</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>Current TCS E11 Campus students only</li>
+                        <li>Must verify with school ID card</li>
+                        <li>One account per student</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">Rules</h4>
+                    <ol class="list-decimal pl-5 text-gray-700 space-y-1">
+                        <li>Be respectful to other students</li>
+                        <li>No bullying, harassment, or hate speech</li>
+                        <li>Keep all content school-appropriate</li>
+                        <li>Don't share personal contact information</li>
+                        <li>Report inappropriate content immediately</li>
+                    </ol>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">Account Responsibility</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>You're responsible for your account security</li>
+                        <li>We may suspend accounts for rule violations</li>
+                        <li>Contact us if you forget your password</li>
+                    </ul>
+                </div>
+                
+                <div class="p-3 rounded" style="background-color: rgba(174, 214, 207, 0.2);">
+                    <h4 class="font-bold text-gray-800 mb-1">Disclaimer</h4>
+                    <p class="text-gray-700 text-sm">
+                        This is a student project created by Tuba Siddiqui (STEM Club President).
+                        Not an official school platform.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-1">Contact</h4>
+                    <p class="text-gray-700">
+                        For issues email at: 582371.tcs@csn.edu.pk<br>
+                        Or find Tuba Siddiqui at school.
+                    </p>
+                </div>
+                
+                <p class="text-sm text-gray-500 pt-4 border-t">
+                    Last Updated: January 2024
                 </p>
             </div>
-            
-            <div>
-                <h4 class="font-bold text-gray-800 mb-1">Contact</h4>
-                <p class="text-gray-700">
-                    For issues: <emailplaceholder><br>
-                    Or find Tuba Siddiqui at school.
-                </p>
-            </div>
-            
-            <p class="text-sm text-gray-500 pt-4 border-t">
-                Last Updated: January 2024
-            </p>
-        </div>
-    `;
-    document.getElementById('modalOverlay').classList.remove('hidden');
-}
-
-function showPrivacyModal() {
-    document.getElementById('modalTitle').textContent = 'Privacy Policy';
-    document.getElementById('modalContent').innerHTML = `
-        <div class="text-left space-y-4">
-            <h3 class="text-xl font-bold" style="color: rgb(100, 127, 188);">Privacy Policy for StudentBridge</h3>
-            
-            <div>
-                <h4 class="font-bold text-gray-800 mb-2">What We Collect</h4>
-                <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                    <li>School roll number (to verify you're a student)</li>
-                    <li>Username (chosen by you)</li>
-                    <li>Hashed password (never stored in plain text)</li>
-                    <li>Student ID photo (deleted after 24 hours)</li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="font-bold text-gray-800 mb-2">How We Use Your Information</h4>
-                <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                    <li>Verify your identity as a TCS E11 Campus student</li>
-                    <li>Allow you to login securely</li>
-                    <li>Contact you if needed</li>
-                    <li>Improve the platform</li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="font-bold text-gray-800 mb-2">Data Protection</h4>
-                <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                    <li>ID photos auto-delete after 24 hours</li>
-                    <li>Passwords are securely hashed (can't be read)</li>
-                    <li>We don't share data with third parties</li>
-                    <li>Data stored securely in our database</li>
-                </ul>
-            </div>
-            
-            <div>
-                <h4 class="font-bold text-gray-800 mb-2">Your Rights</h4>
-                <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                    <li>Request account deletion at any time</li>
-                    <li>Update your profile information</li>
-                    <li>Export your data if needed</li>
-                    <li>Contact us with privacy concerns</li>
-                </ul>
-            </div>
-            
-            <div class="p-3 rounded" style="background-color: rgba(174, 214, 207, 0.2);">
-                <h4 class="font-bold text-gray-800 mb-1">Contact Information</h4>
-                <p class="text-gray-700">
-                    For privacy questions email at: 582371.tcs@csn.edu.pk<br>
-                    Or speak to Tuba Siddiqui (STEM Club President) at school.
-                </p>
-            </div>
-            
-            <p class="text-sm text-gray-500 pt-4 border-t">
-                Last Updated: January 2024
-            </p>
-        </div>
-    `;
-    document.getElementById('modalOverlay').classList.remove('hidden');
-}
-
-function closeModal() {
-    document.getElementById('modalOverlay').classList.add('hidden');
-}
-
-// Close modal when clicking outside content
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-    if (e.target.id === 'modalOverlay') {
-        closeModal();
+        `;
+        document.getElementById('modalOverlay').classList.remove('hidden');
     }
-});
+
+    function showPrivacyModal() {
+        document.getElementById('modalTitle').textContent = 'Privacy Policy';
+        document.getElementById('modalContent').innerHTML = `
+            <div class="text-left space-y-4">
+                <h3 class="text-xl font-bold" style="color: rgb(100, 127, 188);">Privacy Policy for StudentBridge</h3>
+                
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">What We Collect</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>School roll number (to verify you're a student)</li>
+                        <li>Username (chosen by you)</li>
+                        <li>Hashed password (never stored in plain text)</li>
+                        <li>Student ID photo (deleted after 24 hours)</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">How We Use Your Information</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>Verify your identity as a TCS E11 Campus student</li>
+                        <li>Allow you to login securely</li>
+                        <li>Contact you if needed</li>
+                        <li>Improve the platform</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">Data Protection</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>ID photos auto-delete after 24 hours</li>
+                        <li>Passwords are securely hashed (can't be read)</li>
+                        <li>We don't share data with third parties</li>
+                        <li>Data stored securely in our database</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-gray-800 mb-2">Your Rights</h4>
+                    <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                        <li>Request account deletion at any time</li>
+                        <li>Update your profile information</li>
+                        <li>Export your data if needed</li>
+                        <li>Contact us with privacy concerns</li>
+                    </ul>
+                </div>
+                
+                <div class="p-3 rounded" style="background-color: rgba(174, 214, 207, 0.2);">
+                    <h4 class="font-bold text-gray-800 mb-1">Contact Information</h4>
+                    <p class="text-gray-700">
+                        For privacy questions email at: 582371.tcs@csn.edu.pk<br>
+                        Or speak to Tuba Siddiqui (STEM Club President) at school.
+                    </p>
+                </div>
+                
+                <p class="text-sm text-gray-500 pt-4 border-t">
+                    Last Updated: January 2024
+                </p>
+            </div>
+        `;
+        document.getElementById('modalOverlay').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').classList.add('hidden');
+    }
+
+    // Close modal when clicking outside content
+    document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        if (e.target.id === 'modalOverlay') {
+            closeModal();
+        }
+    });
+    </script>
+
+    <!-- Modal/Popup Overlay -->
+    <div id="modalOverlay" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden" 
+             style="background-color: rgb(255, 250, 236);">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-6 border-b"
+                 style="background-color: rgb(100, 127, 188); color: white;">
+                <h2 id="modalTitle" class="text-xl font-bold"></h2>
+                <button onclick="closeModal()" class="text-white hover:text-gray-200 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Modal Content -->
+            <div class="p-6 overflow-y-auto" style="max-height: 60vh;">
+                <div id="modalContent" class="text-gray-700">
+                    <!-- Content loaded by JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="p-4 border-t text-center">
+                <button onclick="closeModal()" 
+                        class="px-6 py-2 rounded-lg font-medium"
+                        style="background-color: rgb(100, 127, 188); color: white;">
+                    I Understand
+                </button>
+                <p class="text-sm text-gray-500 mt-3">
+                    By clicking "I Understand", you acknowledge you've read this.
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
