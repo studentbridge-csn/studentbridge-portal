@@ -238,30 +238,99 @@
                 </div>
                 
                 <!-- Success Message (Hidden initially) -->
-                <div class="p-4 bg-white rounded-lg border">
-    <h4 class="font-bold mb-3 text-gray-800">
-        <i class="fas fa-clipboard-list mr-2" style="color: rgb(100, 127, 188);"></i>
-        What happens next:
-    </h4>
-    <ol class="space-y-3">
-        <li class="flex items-start">
-            <span class="font-bold mr-3">1.</span>
-            <span><strong>We will manually verify your ID</strong> - Our team reviews each submission</span>
-        </li>
-        <li class="flex items-start">
-            <span class="font-bold mr-3">2.</span>
-            <span><strong>We'll check if your roll number matches your ID card</strong> - Ensuring it's valid</span>
-        </li>
-        <li class="flex items-start">
-            <span class="font-bold mr-3">3.</span>
-            <span><strong>Your account will be activated if everything is correct</strong> - You'll get full access</span>
-        </li>
-        <li class="flex items-start">
-            <span class="font-bold mr-3">4.</span>
-            <span><strong>If verification fails</strong> - You'll see specific instructions when trying to login</span>
-        </li>
-    </ol>
-</div>
+                <div id="successSection" class="hidden">
+                    <div class="success-box p-8 rounded-2xl">
+                        <div class="text-center mb-6">
+                            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4"
+                                 style="background-color: rgb(174, 214, 207);">
+                                <i class="fas fa-check text-3xl" style="color: white;"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                                ✅ Verification Request Submitted!
+                            </h3>
+                        </div>
+                        
+                        <div class="text-gray-700 space-y-4 mb-8">
+                            <p>
+                                Your student ID has been received and is now in our review queue.
+                            </p>
+                            
+                            <div class="p-4 bg-white rounded-lg border">
+                                <h4 class="font-bold mb-3 text-gray-800">
+                                    <i class="fas fa-clipboard-list mr-2" style="color: rgb(100, 127, 188);"></i>
+                                    What happens next:
+                                </h4>
+                                <ol class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="font-bold mr-3">1.</span>
+                                        <span>We will manually verify your ID</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold mr-3">2.</span>
+                                        <span>We will check if your roll number matches your ID card</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold mr-3">3.</span>
+                                        <span>Your account will be activated if everything is correct</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold mr-3">4.</span>
+                                        <span>If we cannot verify your ID, you'll see a rejection message when attempting to login</span>
+                                    </li>
+                                </ol>
+                            </div>
+                            
+                            <div class="p-4 bg-white rounded-lg border">
+                                <h4 class="font-bold mb-2 text-gray-800">
+                                    <i class="fas fa-clock mr-2" style="color: rgb(100, 127, 188);"></i>
+                                    Review Timeline
+                                </h4>
+                                <p class="mb-2">
+                                    <strong>⏰ Usually within 24 hours</strong> (often faster!)
+                                </p>
+                                <p class="text-sm text-gray-600">
+                                    We process requests during school hours. Check back tomorrow!
+                                </p>
+                            </div>
+                            
+                            <div class="p-4 bg-white rounded-lg border">
+                                <h4 class="font-bold mb-2 text-gray-800">
+                                    <i class="fas fa-sign-in-alt mr-2" style="color: rgb(100, 127, 188);"></i>
+                                    How to check if you're approved:
+                                </h4>
+                                <p>
+                                    <strong>Try logging in tomorrow!</strong> If your account is active, you'll be able to login.
+                                    If it's still pending, you'll see a "Under Review" message.
+                                </p>
+                            </div>
+                            
+                            <div class="p-4 bg-white rounded-lg border"
+                                 style="border-color: rgb(174, 214, 207);">
+                                <h4 class="font-bold mb-2 text-gray-800">
+                                    <i class="fas fa-question-circle mr-2" style="color: rgb(100, 127, 188);"></i>
+                                    Need help?
+                                </h4>
+                                <p class="mb-2">
+                                    Contact our team lead: <strong>Tuba Siddiqui</strong> (STEM Club President)
+                                </p>
+                                <p class="text-sm text-gray-600">
+                                    Find her at school or email: <a href="mailto:<emailplaceholder>" class="text-blue-600 hover:underline"><emailplaceholder></a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="index.html" 
+                               class="btn-primary inline-flex items-center px-8 py-3 rounded-lg font-bold">
+                                <i class="fas fa-home mr-2"></i>Return to Home Page
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Get user data from localStorage (set by signup page)
         document.addEventListener('DOMContentLoaded', function() {
