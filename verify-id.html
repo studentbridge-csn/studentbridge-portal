@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify ID | StudentBridge</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="app.js"></script>
+    <style>
+        /* Your Color Palette */
+        :root {
+            --primary: rgb(100, 127, 188);   /* #647FBC */
+            --secondary: rgb(145, 173, 200); /* #91ADC8 */
+            --accent: rgb(174, 214, 207);    /* #AED6CF */
+            --background: rgb(255, 250, 236); /* #FFFAEC - CREAM */
+            --green-accent: #5A7863;
+        }
+        
+        body {
+            background-color: var(--background);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #2c3e50;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .upload-area {
+            border: 2px dashed var(--accent);
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover, .upload-area.dragover {
+            border-color: var(--primary);
+            background-color: rgba(100, 127, 188, 0.05);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: rgb(80, 107, 168);
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .bg-accent {
+            background-color: var(--accent);
+        }
+        
+        .border-accent {
+            border-color: var(--accent);
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .success-box {
+            background-color: rgba(174, 214, 207, 0.2);
+            border-left: 4px solid var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto max-w-3xl">
+        <!-- Back Button -->
+        <a href="signup.html" class="inline-flex items-center text-primary hover:opacity-80 mb-8">
+            <i class="fas fa-arrow-left mr-2"></i> Back to Sign Up
+        </a>
+
+        <!-- Main Card -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <!-- Header - BLUE -->
+            <div class="text-white p-8 text-center" style="background-color: rgb(100, 127, 188);">
+                <div class="inline-block bg-white/20 p-4 rounded-2xl mb-4 backdrop-blur-sm">
+                    <i class="fas fa-id-card text-3xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold">Verify Your Student Identity</h1>
+                <p class="mt-2 opacity-90">Final step to activate your StudentBridge account</p>
+            </div>
+
+            <!-- Current User Info -->
+            <div class="p-6" style="background-color: rgba(145, 173, 200, 0.1);">
+                <div class="text-center">
+                    <p class="text-gray-700">
+                        <i class="fas fa-user-circle mr-2" style="color: rgb(100, 127, 188);"></i>
+                        Account: <span id="currentUsername" class="font-bold">Loading...</span>
+                    </p>
+                    <p class="text-sm text-gray-600 mt-1">
+                        Roll Number: <span id="currentRollNumber" class="font-mono">Loading...</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="p-8">
+                <div class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6 text-center" style="color: rgb(100, 127, 188);">
+                        How to Verify Your Account
+                    </h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <!-- Step 1 -->
+                        <div class="text-center">
+                            <div class="step-number w-12 h-12 rounded-full flex items-center justify-center text-lg mx-auto mb-4">
+                                1
+                            </div>
+                            <h4 class="font-bold mb-2 text-gray-800">Take Clear Photo</h4>
+                            <p class="text-gray-600 text-sm">Take photo of your school ID card</p>
+                        </div>
+                        
+                        <!-- Step 2 -->
+                        <div class="text-center">
+                            <div class="step-number w-12 h-12 rounded-full flex items-center justify-center text-lg mx-auto mb-4"
+                                 style="background-color: rgb(145, 173, 200);">
+                                2
+                            </div>
+                            <h4 class="font-bold mb-2 text-gray-800">Upload Below</h4>
+                            <p class="text-gray-600 text-sm">Upload the photo using the box below</p>
+                        </div>
+                        
+                        <!-- Step 3 -->
+                        <div class="text-center">
+                            <div class="step-number w-12 h-12 rounded-full flex items-center justify-center text-lg mx-auto mb-4"
+                                 style="background-color: rgb(174, 214, 207); color: #2c3e50;">
+                                3
+                            </div>
+                            <h4 class="font-bold mb-2 text-gray-800">Wait for Review</h4>
+                            <p class="text-gray-600 text-sm">We'll review and activate within 24h</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Requirements -->
+                    <div class="p-6 rounded-xl border mb-8"
+                         style="background-color: rgba(174, 214, 207, 0.1); border-color: rgb(174, 214, 207);">
+                        <h4 class="font-bold mb-4 text-gray-800">
+                            <i class="fas fa-check-circle mr-2" style="color: rgb(100, 127, 188);"></i>
+                            Photo Requirements
+                        </h4>
+                        <ul class="text-gray-700 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check mt-1 mr-3 text-sm" style="color: rgb(100, 127, 188);"></i>
+                                <span>Your school-issued ID card (TCS E11 Campus)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check mt-1 mr-3 text-sm" style="color: rgb(100, 127, 188);"></i>
+                                <span>Full name and roll number clearly visible</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check mt-1 mr-3 text-sm" style="color: rgb(100, 127, 188);"></i>
+                                <span>Good lighting, no glare on the card</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check mt-1 mr-3 text-sm" style="color: rgb(100, 127, 188);"></i>
+                                <span>File formats: JPG, PNG (max 5MB)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Upload Section -->
+                <div id="uploadSection">
+                    <h3 class="text-xl font-bold mb-6 text-center text-gray-800">
+                        Upload Your Student ID Photo
+                    </h3>
+                    
+                    <!-- Upload Area -->
+                    <div id="uploadArea" 
+                         class="upload-area rounded-2xl p-12 text-center cursor-pointer mb-6">
+                        <div class="mb-4">
+                            <i class="fas fa-cloud-upload-alt text-5xl mb-4"
+                               style="color: rgb(145, 173, 200);"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-gray-800">
+                            Click to upload or drag & drop
+                        </h4>
+                        <p class="text-gray-600 mb-4">
+                            Upload a clear photo of your TCS student ID card
+                        </p>
+                        <div class="text-sm text-gray-500">
+                            <p class="mb-1">
+                                <i class="fas fa-lock mr-1"></i>Your ID photo will be securely stored
+                            </p>
+                            <p>
+                                <i class="fas fa-clock mr-1"></i>Auto-deletes after 24 hours for privacy
+                            </p>
+                        </div>
+                        <input type="file" id="idPhotoInput" accept=".jpg,.jpeg,.png,.pdf" 
+                               class="hidden">
+                    </div>
+                    
+                    <!-- Preview Area (Hidden initially) -->
+                    <div id="previewSection" class="hidden mb-8">
+                        <h4 class="font-bold mb-4 text-gray-800">Photo Preview</h4>
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <div class="md:w-1/2">
+                                <img id="imagePreview" 
+                                     class="w-full h-auto max-h-64 object-contain border rounded-lg shadow"
+                                     alt="ID Preview">
+                            </div>
+                            <div class="md:w-1/2">
+                                <div class="mb-4">
+                                    <p class="font-bold text-gray-700 mb-2">Ready to submit?</p>
+                                    <p class="text-gray-600 text-sm">
+                                        Make sure your name and roll number are clearly visible in the photo.
+                                    </p>
+                                </div>
+                                <div class="flex gap-4">
+                                    <button id="changePhotoBtn" 
+                                            class="px-4 py-2 border rounded-lg text-gray-700 hover:bg-gray-50">
+                                        <i class="fas fa-redo mr-2"></i>Change Photo
+                                    </button>
+                                    <button id="submitBtn"
+                                            class="btn-primary px-6 py-3 rounded-lg font-bold hover:opacity-90">
+                                        <i class="fas fa-paper-plane mr-2"></i>Submit for Verification
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- File Info -->
+                    <div class="text-center text-sm text-gray-500 mt-4">
+                        <p>
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Maximum file size: 5MB • Accepted: JPG, PNG, PDF
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Success Message (Hidden initially) -->
+                <div id="successSection" class="hidden">
+                    <div class="success-box p-8 rounded-2xl">
+                        <div class="text-center mb-6">
+                            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full mb-4"
+                                 style="background-color: rgb(174, 214, 207);">
+                                <i class="fas fa-check text-3xl" style="color: white;"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-800">
+                                ✅ Verification Request Submitted!
+                            </h3>
+                        </div>
+                        
+                        <div class="text-gray-700 space-y-4 mb-8">
+                            <p>
+                                Your student ID has been received and is now in our review queue.
+                            </p>
+                            
+                            <div class="p-4 bg-white rounded-lg border">
+                                <h4 class="font-bold mb-3 text-gray-800">
+                                    <i class="fas fa-clipboard-list mr-2" style="color: rgb(100, 127, 188);"></i>
+                                    What happens next:
+                                </h4>
+                                <ol class="space-y-3">
+                                    <li class="flex items-start">
+                                        <span class="font-bold mr-3">1.</span>
+                                        <span>STEM Club President (<strong>Tuba Siddiqui</strong>) will manually verify your ID</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold mr-3">2.</span>
+                                        <span>She'll check your roll number matches your ID card</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold mr-3">3.</span>
+                                        <span>Account will be activated if everything is correct</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="font-bold mr-3">4.</span>
+                                        <span>If rejected, you'll see a message when trying to login</span>
+                                    </li>
+                                </ol>
+                            </div>
+                            
+                            <div class="p-4 bg-white rounded-lg border">
+                                <h4 class="font-bold mb-2 text-gray-800">
+                                    <i class="fas fa-clock mr-2" style="color: rgb(100, 127, 188);"></i>
+                                    Review Timeline
+                                </h4>
+                                <p class="mb-2">
+                                    <strong>⏰ Usually within 24 hours</strong> (often faster!)
+                                </p>
+                                <p class="text-sm text-gray-600">
+                                    We process requests during school hours. Check back tomorrow!
+                                </p>
+                            </div>
+                            
+                            <div class="p-4 bg-white rounded-lg border">
+                                <h4 class="font-bold mb-2 text-gray-800">
+                                    <i class="fas fa-sign-in-alt mr-2" style="color: rgb(100, 127, 188);"></i>
+                                    How to check if you're approved:
+                                </h4>
+                                <p>
+                                    <strong>Try logging in tomorrow!</strong> If your account is active, you'll be able to login.
+                                    If it's still pending, you'll see a "Under Review" message.
+                                </p>
+                            </div>
+                            
+                            <div class="p-4 bg-white rounded-lg border"
+                                 style="border-color: rgb(174, 214, 207);">
+                                <h4 class="font-bold mb-2 text-gray-800">
+                                    <i class="fas fa-question-circle mr-2" style="color: rgb(100, 127, 188);"></i>
+                                    Need help?
+                                </h4>
+                                <p>
+                                    Find <strong>Tuba Siddiqui</strong> at school or contact through STEM Club.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center">
+                            <a href="index.html" 
+                               class="btn-primary inline-flex items-center px-8 py-3 rounded-lg font-bold">
+                                <i class="fas fa-home mr-2"></i>Return to Home Page
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get user data from localStorage (set by signup page)
+        document.addEventListener('DOMContentLoaded', function() {
+            const pendingRegistration = JSON.parse(
+                localStorage.getItem('pending_registration') || '{}'
+            );
+            
+            if (pendingRegistration.email) {
+                const rollNumber = pendingRegistration.email.split('.')[0];
+                document.getElementById('currentRollNumber').textContent = rollNumber;
+                document.getElementById('currentUsername').textContent = pendingRegistration.username;
+            } else {
+                // No pending registration, redirect to signup
+                window.location.href = 'signup.html';
+            }
+        });
+
+        // Upload area interactions
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('idPhotoInput');
+        const previewSection = document.getElementById('previewSection');
+        const imagePreview = document.getElementById('imagePreview');
+        const uploadSection = document.getElementById('uploadSection');
+        const successSection = document.getElementById('successSection');
+        const changePhotoBtn = document.getElementById('changePhotoBtn');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Click upload area to trigger file input
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        // Drag and drop functionality
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            if (e.dataTransfer.files.length) {
+                handleFileSelect(e.dataTransfer.files[0]);
+            }
+        });
+
+        // File input change
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        // Change photo button
+        changePhotoBtn.addEventListener('click', () => {
+            previewSection.classList.add('hidden');
+            uploadSection.querySelector('#uploadSection > div:not(#previewSection)').classList.remove('hidden');
+            fileInput.value = '';
+        });
+
+        // Handle file selection
+        function handleFileSelect(file) {
+            // Validate file
+            const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'application/pdf'];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            
+            if (!validTypes.includes(file.type)) {
+                alert('Please upload a JPG, PNG, or PDF file.');
+                return;
+            }
+            
+            if (file.size > maxSize) {
+                alert('File size must be less than 5MB.');
+                return;
+            }
+            
+            // Show preview (for images)
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    previewSection.classList.remove('hidden');
+                    uploadSection.querySelector('#uploadSection > div:not(#previewSection)').classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                // For PDF, show a PDF icon
+                imagePreview.src = 'https://cdn-icons-png.flaticon.com/512/337/337946.png';
+                previewSection.classList.remove('hidden');
+                uploadSection.querySelector('#uploadSection > div:not(#previewSection)').classList.add('hidden');
+            }
+            
+            // Store file for submission
+            window.selectedFile = file;
+        }
+
+        // Submit verification
+        submitBtn.addEventListener('click', async function() {
+            if (!window.selectedFile) {
+                alert('Please select a file first.');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+            submitBtn.disabled = true;
+            
+            // Convert file to Base64
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Get user data
+                const pendingRegistration = JSON.parse(
+                    localStorage.getItem('pending_registration') || '{}'
+                );
+                
+                // Create verification request
+                const verificationRequest = {
+                    email: pendingRegistration.email,
+                    username: pendingRegistration.username,
+                    rollNumber: pendingRegistration.email.split('.')[0],
+                    idPhoto: e.target.result, // Base64 string
+                    submittedAt: new Date().toISOString(),
+                    status: 'pending'
+                };
+                
+                // Save to localStorage (temporary)
+                const pendingVerifications = JSON.parse(
+                    localStorage.getItem('studentbridge_pending_verifications') || '[]'
+                );
+                pendingVerifications.push(verificationRequest);
+                localStorage.setItem('studentbridge_pending_verifications', JSON.stringify(pendingVerifications));
+                
+                // Clear pending registration
+                localStorage.removeItem('pending_registration');
+                
+                // Show success message after delay
+                setTimeout(() => {
+                    uploadSection.style.display = 'none';
+                    successSection.classList.remove('hidden');
+                }, 1000);
+            };
+            
+            reader.readAsDataURL(window.selectedFile);
+        });
+    </script>
+</body>
+</html>
